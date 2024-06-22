@@ -1,4 +1,6 @@
 # Aygaz-Bootcamp
+
+# Bu kodlar ile kütüphane, makine öğrenmesi modeli gibi ihtiyaç duyulan eklentileri import ile içe aktardık
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -6,28 +8,27 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression 
 
-                Bu kodlar ile kütüphane, makine öğrenmesi modeli gibi ihtiyaç duyulan eklentileri import ile içe aktardık
-
+                
+# veri setimizi içe aktarıp görüntüledik
 vehicles = pd.read_csv("vehicles.csv")
 vehicles
 
-                veri setimizi içe aktarıp görüntüledik
 
+# Verileri görselleştirdik
 vehicles.plot(kind = 'scatter', x = 'year', y = 'co2emissions')
 vehicles.groupby('year')['drive'].value_counts().unstack()
 vehicles.groupby('year')['drive'].value_counts().unstack().plot(kind = 'bar', 
                                                                 stacked = True, 
                                                                 figsize = (10, 5))
 
-               Verileri görselleştirdik
-
+# Çalışmak istediğimiz veriler olan Front-Wheel Drive ve Compact Cars haricindeki özellikleri kaldırdık.
 filtered_vehicles = vehicles[(vehicles['drive'] == 'Front-Wheel Drive') & (vehicles['class'] == 'Compact Cars')]
 
-               Bu satırda çalışmak istediğimiz veriler olan Front-Wheel Drive ve Compact Cars haricindeki özellikleri kaldırdık.
 
+# filtrelenmiş veri setini görüntüledik
 filtered_vehicles.plot(kind = 'scatter', x = 'year', y = 'co2emissions')
 
-                filtrelenmiş veri setini görüntüledik
+
 
 # 'year' ve 'co2emissions' sütunlarını seç
 X = filtered_vehicles[['year']]
@@ -61,6 +62,5 @@ plt.ylabel('CO2 Emisyonları')
 plt.title('Yıl ve CO2 Emisyonları Arasındaki İlişki')
 plt.show()
 
-                         makine öğrenmesi modeli kurup lineer regresyon analizi ile gelecek yıllar için co2emissions değerini tahmin ettik
-
+                       
                          
